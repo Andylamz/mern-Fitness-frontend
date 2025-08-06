@@ -6,6 +6,7 @@ function Calculator() {
   return (
     <div className="min-h-screen text-[#6572aa] mb-30">
       <Header />
+      {/* mt-10 */}
       <CalculatorsContainer>
         <Outlet />
       </CalculatorsContainer>

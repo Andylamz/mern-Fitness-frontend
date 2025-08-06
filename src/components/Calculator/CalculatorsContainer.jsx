@@ -26,7 +26,7 @@ function CalculatorsContainer({ children }) {
               }`
             }
           >
-            Calories
+            BMR
           </NavLink>
         </div>
         <div className="bg-[#252733] p-8">{children}</div>

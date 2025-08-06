@@ -54,7 +54,7 @@ function BmiInput({ setWeight, setHeight }) {
             <input
               type="text"
               id="height"
-              className={`flex-1 border ${
+              className={`flex-1 border focus:border-[#c9b26c] ${
                 heightError ? "border-red-500" : ""
               } outline-none px-2 py-2 rounded-sm min-w-0`}
               ref={heightRef}
@@ -74,7 +74,7 @@ function BmiInput({ setWeight, setHeight }) {
             <input
               type="text"
               id="weight"
-              className={`flex-1 border ${
+              className={`flex-1 border focus:border-[#c9b26c] ${
                 weightError ? "border-red-500" : ""
               } outline-none px-2 py-2 rounded-sm min-w-0`}
               ref={weightRef}

@@ -5,6 +5,8 @@ import Header from "../components/Header";
 import Calculator from "../routes/Calculator";
 import Bmi from "../components/Calculator/Bmi";
 import Calories from "../components/Calculator/Calories";
+import Recipes from "../routes/Recipes";
+import RecipeInfo from "../components/Recipes/RecipeInfo";
 
 const router = createBrowserRouter([
   {
@@ -26,13 +28,21 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "calculator",
+    path: "/calculator",
     element: <Calculator />,
     children: [
       { index: true, element: <Bmi /> },
       { path: "bmi", element: <Bmi /> },
       { path: "calories", element: <Calories /> },
     ],
+  },
+  {
+    path: "/recipes",
+    element: <Recipes />,
+  },
+  {
+    path: "/recipes/:id",
+    element: <RecipeInfo />,
   },
   {
     path: "*",

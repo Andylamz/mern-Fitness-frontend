@@ -7,8 +7,12 @@ function CardSection() {
       <Link to={"/calculator"} className="w-full">
         <HomeCard text={"BMI & Calories Calculator"} icon={"calculator"} />
       </Link>
-      <HomeCard text={"Healthy Recipe"} icon={"utensils"} />
-      <HomeCard text={"Progress Tracker"} icon={"chart-column"} />
+      <Link to="/recipes" className="w-full">
+        <HomeCard text={"Recipes"} icon={"utensils"} />
+      </Link>
+      <Link to="/" className="w-full">
+        <HomeCard text={"Progress Tracker"} icon={"chart-column"} />
+      </Link>
     </div>
   );
 }
