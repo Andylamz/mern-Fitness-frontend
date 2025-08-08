@@ -12,9 +12,7 @@ function RecipeInfo() {
   async function fetchData() {
     try {
       const res = await axios.get(`${baseUrl}/api/recipeSearch/recipes/${id}`);
-      console.log(res.data);
       if (res.data.success) {
-        console.log("set", res.data.data);
         setData(res.data.data);
       }
     } catch {

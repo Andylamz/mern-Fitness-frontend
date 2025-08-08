@@ -1,4 +1,9 @@
-import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import logo from "../assets/app_logo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,7 +26,9 @@ function Header() {
             </Link>
           </SignedOut>
           {/* --------------------------------------------- */}
-          <SignedIn>{"To be filled"}</SignedIn>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
     </div>

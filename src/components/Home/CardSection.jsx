@@ -10,7 +10,7 @@ function CardSection() {
       <Link to="/recipes" className="w-full">
         <HomeCard text={"Recipes"} icon={"utensils"} />
       </Link>
-      <Link to="/" className="w-full">
+      <Link to="/dashboard" className="w-full">
         <HomeCard text={"Progress Tracker"} icon={"chart-column"} />
       </Link>
     </div>

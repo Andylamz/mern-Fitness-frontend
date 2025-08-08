@@ -1,7 +1,6 @@
 function BmiOutput({ weight, height }) {
   const bmi = +(weight / (height / 100) ** 2).toFixed(1);
 
-  console.log(bmi);
   return (
     <div className="mt-15">
       {!bmi && <h3 className="text-xl font-semibold mb-6">BMI CATEGORIES</h3>}

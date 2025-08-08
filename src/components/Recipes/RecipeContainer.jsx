@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Loading from "../Loading";
 
 const baseUrl = import.meta.env.VITE_BACKEND_API;
-console.log(baseUrl);
 
 function RecipeContainer() {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(isLoading, data);
   async function fetchRecipesData() {
+    setIsLoading(true);
     try {
       const res = await axios.get(`${baseUrl}/api/recipeSearch`);
       setData(res.data.data);
-      console.log(res.data.data);
     } catch (err) {
       return toast.error(err.message);
+    } finally {
+      setIsLoading(false);
     }
   }
   useEffect(() => {
-    setIsLoading(true);
     fetchRecipesData();
-    setIsLoading(false);
   }, []);
 
   return (
@@ -39,7 +39,12 @@ function RecipeContainer() {
           ))}
         </div>
       )}
-      {isLoading && !data && <div>Loading...</div>}
+      {isLoading && !data && (
+        <Loading
+          message="This may take a bit longer as the deployment is on a free plan, and
+            it will take time to wake up."
+        />
+      )}
     </div>
   );
 }

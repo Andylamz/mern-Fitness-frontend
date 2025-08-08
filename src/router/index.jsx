@@ -7,6 +7,8 @@ import Bmi from "../components/Calculator/Bmi";
 import Calories from "../components/Calculator/Calories";
 import Recipes from "../routes/Recipes";
 import RecipeInfo from "../components/Recipes/RecipeInfo";
+import NotFound from "../components/NotFound";
+import Dashboard from "../routes/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -45,8 +47,12 @@ const router = createBrowserRouter([
     element: <RecipeInfo />,
   },
   {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
     path: "*",
-    element: <div>404 Not Found</div>,
+    element: <NotFound />,
   },
 ]);
 
