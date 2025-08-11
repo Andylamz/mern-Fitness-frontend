@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Info from "../components/Dashboard/Info";
 import Loading from "../components/Loading";
+import Overview from "../components/Dashboard/LoggedIn/Overview";
 
 function Dashboard() {
   const user = useUser();
@@ -29,7 +30,9 @@ function Dashboard() {
     <div>
       <Header />
       {user.isSignedIn && user.user && (
-        <div className="xl:px-35 md:px-10 px-4">Hi {firstName}</div>
+        <div className="xl:px-35 md:px-10 px-4">
+        <Overview firstName={firstName}/>
+        </div>
       )}
       {isLoaded && isSignedIn && !personalData && <Info />}
     </div>
