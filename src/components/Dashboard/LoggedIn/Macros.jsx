@@ -5,6 +5,8 @@ import Loading from "../../Loading";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const options = {
+  responsive: true,
+  maintainAspectRatio: true,
   cutout: "80%",
   radius: "90%",
   plugins: {
@@ -15,7 +17,6 @@ const options = {
 };
 
 function Macros({ todayData, todayDataIsLoading }) {
-  console.log(todayData);
   const protein = todayData
     ? todayData.foods.reduce((acc, next) => acc + next.total_protein, 0)
     : 0;
@@ -94,7 +95,7 @@ function Macros({ todayData, todayDataIsLoading }) {
       }
     : {};
   return (
-    <div className="min-w-80 max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
+    <div className="w-full max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
       <>
         {todayData && !todayDataIsLoading && (
           <>
@@ -104,15 +105,15 @@ function Macros({ todayData, todayDataIsLoading }) {
 
             <div className="flex flex-col justify-center px-5 mt-4">
               <div className="flex justify-between">
-                <div className="flex flex-col gap-4 w-20 pt-7 text-center">
+                <div className="flex flex-1 flex-col gap-4 max-w-20 pt-7 text-center">
                   <Doughnut data={proteinData} options={options} />
                   <h4 className="text-[#42f1b1]">Protein</h4>
                 </div>
-                <div className="flex flex-col gap-4 w-20 pt-7 text-center">
+                <div className="flex flex-1 flex-col gap-4 max-w-20 pt-7 text-center">
                   <Doughnut data={carbsData} options={options} />
                   <h4 className="text-[#d734f4]">Carbs</h4>
                 </div>
-                <div className="flex flex-col gap-4 w-20 pt-7 text-center">
+                <div className="flex flex-1 flex-col gap-4 max-w-20 pt-7 text-center">
                   <Doughnut data={fiberData} options={options} />
                   <h4 className="text-[#f9611f]">Fiber</h4>
                 </div>

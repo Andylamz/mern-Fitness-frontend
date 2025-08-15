@@ -72,7 +72,7 @@ function FoodInfoPage() {
           },
         }
       );
-      console.log(res);
+
       if (res.data.success) {
         refresh();
         navigate("/dashboard/foodlog");
@@ -118,7 +118,7 @@ function FoodInfoPage() {
             id: id,
           },
         });
-        console.log(res.data.data);
+
         if (res.data.success) {
           return setData(res.data.data);
         }

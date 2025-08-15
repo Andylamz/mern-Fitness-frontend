@@ -21,6 +21,8 @@ ChartJS.register(
 );
 
 const options = {
+  responsive: true,
+  maintainAspectRatio: false,
   scales: {
     y: {
       grid: {
@@ -80,7 +82,7 @@ function Steps({ data, dataIsLoading }) {
       : {};
 
   return (
-    <div className="min-w-80 max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
+    <div className="w-full max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
       <>
         {steps && dates && (
           <div className="h-full flex flex-col justify-center px-5">

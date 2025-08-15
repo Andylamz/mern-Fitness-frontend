@@ -12,7 +12,7 @@ export default function CaloriesOverview({ todayData, todayDataIsLoading }) {
   return (
     <>
       {todayData && !todayDataIsLoading && (
-        <div className="text-[#6572aa]  min-w-80  max-w-90 rounded-lg text-center px-5 py-5">
+        <div className="text-[#6572aa]  w-full  max-w-90 rounded-lg text-center px-5 py-5">
           <p className="text-xl font-semibold">Calories</p>
           <div className="flex flex-col gap-3 mt-5">
             <div className="flex text-red-500 justify-between">

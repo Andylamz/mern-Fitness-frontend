@@ -52,7 +52,7 @@ function Weather({ getToken }) {
   }
 
   return (
-    <div className="min-w-80 max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 hover:scale-105 duration-500 group">
+    <div className="w-full max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 hover:scale-105 duration-500 group">
       {weather && weather.cod === 200 && (
         <div
           className={`flex items-center justify-center text-[#151824] group-hover:text-[#c9b26c] duration-500 w-full rounded-lg text-center px-5 py-5 h-full ${

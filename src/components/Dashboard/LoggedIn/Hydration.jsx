@@ -6,6 +6,8 @@ import Loading from "../../Loading";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const doughnutOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
   cutout: "80%",
   radius: "90%",
   plugins: {
@@ -34,7 +36,7 @@ function Hydration({ type = "", todayData, todayDataIsLoading }) {
   return (
     <div className={type === "overview" ? "lg:block hidden" : ""}>
       {!todayDataIsLoading && (
-        <div className="flex justify-center text-[#6572aa]  min-w-80  max-w-90 rounded-lg text-center px-5 py-5">
+        <div className="flex justify-center text-[#6572aa] w-full  max-w-90 rounded-lg text-center px-5 py-5">
           <div className="w-full">
             <h3 className="text-xl font-semibold mb-3">Hydration</h3>
             <div className="flex justify-center gap-10">

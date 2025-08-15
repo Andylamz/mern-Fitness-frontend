@@ -113,7 +113,7 @@ function Dashboard() {
     <div>
       <Header />
       {user.isSignedIn && user.user && (
-        <div className="xl:px-35 md:px-10 px-4 mb-50 mt-10">
+        <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 lg:block hidden">
           <Overview
             firstName={firstName}
             todayData={todayData}
