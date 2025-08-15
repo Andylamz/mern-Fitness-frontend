@@ -1,6 +1,12 @@
-import { useAuth, useUser } from "@clerk/clerk-react";
+import {
+  RedirectToSignIn,
+  SignedIn,
+  SignedOut,
+  useAuth,
+  useUser,
+} from "@clerk/clerk-react";
 import Header from "../components/Header";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import Info from "../components/Dashboard/Info";
 import Loading from "../components/Loading";
@@ -22,19 +28,19 @@ function Dashboard() {
   const [todayDataIsLoading, setTodayDataIsLoading] = useState(true);
   const user = useUser();
   const userMongoId = user?.user?.publicMetadata?.mongoId;
-  const { getToken } = useAuth();
+  const { getToken, userId } = useAuth();
   const firstName = user?.user?.firstName;
   const personalData = user?.user?.publicMetadata.personalData;
   const { isLoaded, isSignedIn } = user;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Authentication - if not logged in, redirect to login page
-  useEffect(() => {
-    if (isLoaded && !isSignedIn) {
-      navigate("/sign-in");
-      return null;
-    }
-  }, [navigate, isLoaded, isSignedIn]);
+  // useEffect(() => {
+  //   if (isLoaded && !isSignedIn) {
+  //     navigate("/sign-in");
+  //     return null;
+  //   }
+  // }, [navigate, isLoaded, isSignedIn]);
 
   const fetchBackendData = useCallback(
     async function () {
@@ -93,12 +99,20 @@ function Dashboard() {
 
   // fetching backend data
   useEffect(() => {
+    if (typeof fetchBackendData !== "function") {
+      console.err("fetchBackend is not a function", fetchBackendData);
+    }
+    if (typeof fetchTodayData !== "function") {
+      console.err("fetchTodayData is not a function", fetchTodayData);
+    }
     if (userMongoId && !data && !isFetched) {
       fetchBackendData();
       fetchTodayData();
       setIsFetched(true);
     }
   }, [data, isFetched, userMongoId, fetchBackendData, fetchTodayData]);
+  if (!isLoaded) return null;
+  if (!userId) return <RedirectToSignIn redirectUrl={"/dashboard"} />;
 
   function refresh() {
     fetchBackendData();
@@ -110,44 +124,52 @@ function Dashboard() {
   }
 
   return (
-    <div>
-      <Header />
-      {user.isSignedIn && user.user && (
-        <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 lg:block hidden">
-          <Overview
-            firstName={firstName}
-            todayData={todayData}
-            todayDataIsLoading={todayDataIsLoading}
-          />
-          <div className="grid grid-cols-4 grid-rows-2 mt-6 max-h-160 gap-5">
-            <Weather getToken={getToken} />
-            <Calories
-              todayData={todayData}
-              todayDataIsLoading={todayDataIsLoading}
-            />
-            <Steps data={data} dataIsLoading={dataIsLoading} />
-            <DashboardAddContainer>
-              <Outlet
-                context={{
-                  refresh: refresh,
-                  userMongoId: userMongoId,
-                  todayData,
-                  todayDataIsLoading,
-                }}
-              />
-            </DashboardAddContainer>
-            <Exercise data={data} dataIsLoading={dataIsLoading} />
-            <Macros
-              todayData={todayData}
-              todayDataIsLoading={todayDataIsLoading}
-            />
-            <Weight data={data} dataIsLoading={dataIsLoading} />
-          </div>
-        </div>
-      )}
+    <>
+      <SignedOut>
+        <RedirectToSignIn redirectUrl={"/dashboard"} />
+      </SignedOut>
 
-      {isLoaded && isSignedIn && !personalData && <Info />}
-    </div>
+      <SignedIn>
+        <div>
+          <Header />
+          {user.isSignedIn && user.user && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 lg:block hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-4 grid-rows-2 mt-6 max-h-160 gap-5">
+                <Weather getToken={getToken} />
+                <Calories
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Steps data={data} dataIsLoading={dataIsLoading} />
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
+                  />
+                </DashboardAddContainer>
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
+              </div>
+            </div>
+          )}
+
+          {isLoaded && isSignedIn && !personalData && <Info />}
+        </div>
+      </SignedIn>
+    </>
   );
 }
 

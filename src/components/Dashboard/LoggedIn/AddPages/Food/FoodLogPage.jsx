@@ -2,7 +2,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 
 function FoodLogPage() {
   const navigate = useNavigate();
-  const { todayData, todayDataIsLoading } = useOutletContext();
+  const { todayData } = useOutletContext();
 
   function handleNavigate(path) {
     navigate(path);
