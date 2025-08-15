@@ -9,7 +9,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_API;
 function RecipeContainer() {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  console.log(isLoading, data);
+
   async function fetchRecipesData() {
     setIsLoading(true);
     try {
@@ -41,6 +41,7 @@ function RecipeContainer() {
       )}
       {isLoading && !data && (
         <Loading
+          margin={40}
           message="This may take a bit longer as the deployment is on a free plan, and
             it will take time to wake up."
         />

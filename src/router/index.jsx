@@ -9,6 +9,15 @@ import Recipes from "../routes/Recipes";
 import RecipeInfo from "../components/Recipes/RecipeInfo";
 import NotFound from "../components/NotFound";
 import Dashboard from "../routes/Dashboard";
+import DashboardAddContainer from "../components/Dashboard/LoggedIn/DashboardAddContainer";
+import AddStepsPage from "../components/Dashboard/LoggedIn/AddPages/AddStepsPage";
+import AddDefaultPage from "../components/Dashboard/LoggedIn/AddPages/AddDefaultPage";
+import UpdateWeightPage from "../components/Dashboard/LoggedIn/AddPages/UpdateWeightPage";
+import AddExercisePage from "../components/Dashboard/LoggedIn/AddPages/AddExercisePage";
+import FoodLogPage from "../components/Dashboard/LoggedIn/AddPages/Food/FoodLogPage";
+import SearchFoodPage from "../components/Dashboard/LoggedIn/AddPages/Food/SearchFoodPage";
+import AddWaterPage from "../components/Dashboard/LoggedIn/AddPages/AddWaterPage";
+import FoodInfoPage from "../components/Dashboard/LoggedIn/AddPages/Food/FoodInfoPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +58,16 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children: [
+      { index: true, element: <AddDefaultPage /> },
+      { path: "addSteps", element: <AddStepsPage /> },
+      { path: "addWeight", element: <UpdateWeightPage /> },
+      { path: "addExercise", element: <AddExercisePage /> },
+      { path: "foodlog", element: <FoodLogPage /> },
+      { path: "searchFood", element: <SearchFoodPage /> },
+      { path: "addWater", element: <AddWaterPage /> },
+      { path: "searchFood/:id", element: <FoodInfoPage /> },
+    ],
   },
   {
     path: "*",

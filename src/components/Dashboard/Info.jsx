@@ -26,7 +26,7 @@ function Info() {
     const height = heightRef.current.value;
     const age = ageRef.current.value;
     const token = await getToken();
-    console.log(token);
+
     // Validation
     if (!/^\d*$/.test(age) || age.trim() === "") {
       setAgeError(true);
@@ -83,7 +83,6 @@ function Info() {
         }
       );
 
-      console.log(res);
       if (res.data.success) {
         toast.success(res.data.msg, {
           autoClose: 800,
