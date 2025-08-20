@@ -9,7 +9,6 @@ import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import Info from "../components/Dashboard/Info";
-import Loading from "../components/Loading";
 import Overview from "../components/Dashboard/LoggedIn/Overview";
 import axios from "axios";
 import Weather from "../components/Dashboard/LoggedIn/Weather";
@@ -134,209 +133,199 @@ function Dashboard() {
         <div>
           <Header />
           {/* 2XL */}
-          {user.isSignedIn &&
-            user.user &&
-            personalData(
-              <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 2xl:block hidden">
-                <Overview
-                  firstName={firstName}
+          {user.isSignedIn && user.user && personalData && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 2xl:block hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-4 grid-rows-2 mt-6 max-h-160 gap-5">
+                <Weather getToken={getToken} />
+                <Calories
                   todayData={todayData}
                   todayDataIsLoading={todayDataIsLoading}
                 />
-                <div className="grid grid-cols-4 grid-rows-2 mt-6 max-h-160 gap-5">
-                  <Weather getToken={getToken} />
-                  <Calories
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
+                <Steps data={data} dataIsLoading={dataIsLoading} />
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
                   />
-                  <Steps data={data} dataIsLoading={dataIsLoading} />
-                  <DashboardAddContainer>
-                    <Outlet
-                      context={{
-                        refresh: refresh,
-                        userMongoId: userMongoId,
-                        todayData,
-                        todayDataIsLoading,
-                      }}
-                    />
-                  </DashboardAddContainer>
-                  <Exercise data={data} dataIsLoading={dataIsLoading} />
-                  <Macros
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
-                  />
-                  <Weight data={data} dataIsLoading={dataIsLoading} />
-                </div>
+                </DashboardAddContainer>
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
               </div>
-            )}
+            </div>
+          )}
 
           {/* XL */}
-          {user.isSignedIn &&
-            user.user &&
-            personalData(
-              <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 xl:block hidden 2xl:hidden">
-                <Overview
-                  firstName={firstName}
+          {user.isSignedIn && user.user && personalData && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 xl:block hidden 2xl:hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-3 mt-6 gap-5">
+                <Weather getToken={getToken} />
+                <Calories
                   todayData={todayData}
                   todayDataIsLoading={todayDataIsLoading}
                 />
-                <div className="grid grid-cols-3 mt-6 gap-5">
-                  <Weather getToken={getToken} />
-                  <Calories
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
+                  />
+                </DashboardAddContainer>
+                <Steps data={data} dataIsLoading={dataIsLoading} />
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
+                <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
+                  <Hydration
                     todayData={todayData}
                     todayDataIsLoading={todayDataIsLoading}
                   />
-                  <DashboardAddContainer>
-                    <Outlet
-                      context={{
-                        refresh: refresh,
-                        userMongoId: userMongoId,
-                        todayData,
-                        todayDataIsLoading,
-                      }}
-                    />
-                  </DashboardAddContainer>
-                  <Steps data={data} dataIsLoading={dataIsLoading} />
-                  <Exercise data={data} dataIsLoading={dataIsLoading} />
-                  <Macros
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
-                  />
-                  <Weight data={data} dataIsLoading={dataIsLoading} />
-                  <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
-                    <Hydration
-                      todayData={todayData}
-                      todayDataIsLoading={todayDataIsLoading}
-                    />
-                  </div>
                 </div>
               </div>
-            )}
+            </div>
+          )}
 
           {/* LG */}
-          {user.isSignedIn &&
-            user.user &&
-            personalData(
-              <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 lg:block xl:hidden hidden">
-                <Overview
-                  firstName={firstName}
+          {user.isSignedIn && user.user && personalData && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 lg:block xl:hidden hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-3 mt-6 gap-5">
+                <Weather getToken={getToken} />
+                <Calories
                   todayData={todayData}
                   todayDataIsLoading={todayDataIsLoading}
                 />
-                <div className="grid grid-cols-3 mt-6 gap-5">
-                  <Weather getToken={getToken} />
-                  <Calories
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
+                  />
+                </DashboardAddContainer>
+                <Steps data={data} dataIsLoading={dataIsLoading} />
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
+                <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
+                  <Hydration
                     todayData={todayData}
                     todayDataIsLoading={todayDataIsLoading}
                   />
-                  <DashboardAddContainer>
-                    <Outlet
-                      context={{
-                        refresh: refresh,
-                        userMongoId: userMongoId,
-                        todayData,
-                        todayDataIsLoading,
-                      }}
-                    />
-                  </DashboardAddContainer>
-                  <Steps data={data} dataIsLoading={dataIsLoading} />
-                  <Exercise data={data} dataIsLoading={dataIsLoading} />
-                  <Macros
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
-                  />
-                  <Weight data={data} dataIsLoading={dataIsLoading} />
-                  <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
-                    <Hydration
-                      todayData={todayData}
-                      todayDataIsLoading={todayDataIsLoading}
-                    />
-                  </div>
                 </div>
               </div>
-            )}
+            </div>
+          )}
 
           {/* MD */}
-          {user.isSignedIn &&
-            user.user &&
-            personalData(
-              <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 md:block lg:hidden hidden">
-                <Overview
-                  firstName={firstName}
+          {user.isSignedIn && user.user && personalData && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 md:block lg:hidden hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-1 mt-6 gap-5">
+                <Weather getToken={getToken} />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
+                <Calories
                   todayData={todayData}
                   todayDataIsLoading={todayDataIsLoading}
                 />
-                <div className="grid grid-cols-1 mt-6 gap-5">
-                  <Weather getToken={getToken} />
-                  <Weight data={data} dataIsLoading={dataIsLoading} />
-                  <Calories
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
                   />
-                  <DashboardAddContainer>
-                    <Outlet
-                      context={{
-                        refresh: refresh,
-                        userMongoId: userMongoId,
-                        todayData,
-                        todayDataIsLoading,
-                      }}
-                    />
-                  </DashboardAddContainer>
-                  <Macros
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
-                  />
-                  <Exercise data={data} dataIsLoading={dataIsLoading} />
-                  <Steps data={data} dataIsLoading={dataIsLoading} />
-                </div>
+                </DashboardAddContainer>
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Steps data={data} dataIsLoading={dataIsLoading} />
               </div>
-            )}
+            </div>
+          )}
 
           {/* SM */}
-          {user.isSignedIn &&
-            user.user &&
-            personalData(
-              <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 block md:hidden">
-                <Overview
-                  firstName={firstName}
+          {user.isSignedIn && user.user && personalData && (
+            <div className="xl:px-40 md:px-10 px-4 mb-50 mt-10 block md:hidden">
+              <Overview
+                firstName={firstName}
+                todayData={todayData}
+                todayDataIsLoading={todayDataIsLoading}
+              />
+              <div className="grid grid-cols-1 mt-6 gap-5">
+                <Weather getToken={getToken} />
+                <Weight data={data} dataIsLoading={dataIsLoading} />
+                <Calories
                   todayData={todayData}
                   todayDataIsLoading={todayDataIsLoading}
                 />
-                <div className="grid grid-cols-1 mt-6 gap-5">
-                  <Weather getToken={getToken} />
-                  <Weight data={data} dataIsLoading={dataIsLoading} />
-                  <Calories
+
+                <Macros
+                  todayData={todayData}
+                  todayDataIsLoading={todayDataIsLoading}
+                />
+                <Exercise data={data} dataIsLoading={dataIsLoading} />
+                <Steps data={data} dataIsLoading={dataIsLoading} />
+
+                <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
+                  <Hydration
                     todayData={todayData}
                     todayDataIsLoading={todayDataIsLoading}
                   />
-
-                  <Macros
-                    todayData={todayData}
-                    todayDataIsLoading={todayDataIsLoading}
-                  />
-                  <Exercise data={data} dataIsLoading={dataIsLoading} />
-                  <Steps data={data} dataIsLoading={dataIsLoading} />
-
-                  <div className="w-full bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500 flex flex-col justify-center">
-                    <Hydration
-                      todayData={todayData}
-                      todayDataIsLoading={todayDataIsLoading}
-                    />
-                  </div>
-                  <DashboardAddContainer>
-                    <Outlet
-                      context={{
-                        refresh: refresh,
-                        userMongoId: userMongoId,
-                        todayData,
-                        todayDataIsLoading,
-                      }}
-                    />
-                  </DashboardAddContainer>
                 </div>
+                <DashboardAddContainer>
+                  <Outlet
+                    context={{
+                      refresh: refresh,
+                      userMongoId: userMongoId,
+                      todayData,
+                      todayDataIsLoading,
+                    }}
+                  />
+                </DashboardAddContainer>
               </div>
-            )}
+            </div>
+          )}
           {isLoaded && isSignedIn && !personalData && <Info />}
         </div>
       </SignedIn>
