@@ -65,8 +65,9 @@ function Info() {
 
     //  ----------------------- remember to change this ------------------
     try {
+      const baseUrl = import.meta.env.VITE_BACKEND_API;
       const res = await axios.patch(
-        "http://localhost:3000/api/dashboard/personalDetails",
+        `${baseUrl}/api/dashboard/personalDetails`,
         {
           mongoId: mongoId,
           weight: +weight,
