@@ -34,12 +34,12 @@ function Hydration({ type = "", todayData, todayDataIsLoading }) {
   };
 
   return (
-    <div className={type === "overview" ? "lg:block hidden" : ""}>
+    <div className={type === "overview" ? "2xl:block hidden" : ""}>
       {!todayDataIsLoading && (
-        <div className="flex justify-center text-[#6572aa] w-full  max-w-90 rounded-lg text-center px-5 py-5">
+        <div className="flex justify-center text-[#6572aa] w-full  lg:max-w-90 rounded-lg text-center px-5 py-5">
           <div className="w-full">
             <h3 className="text-xl font-semibold mb-3">Hydration</h3>
-            <div className="flex justify-center gap-10">
+            <div className="flex justify-center gap-10 h-50">
               <div className="flex flex-col justify-center text-xs gap-3">
                 <div className="text-[#36a2eb]">
                   <p>intake</p>
@@ -51,7 +51,7 @@ function Hydration({ type = "", todayData, todayDataIsLoading }) {
                   <p>{2000 - waterIntake}</p>
                 </div>
               </div>
-              <div className="w-30">
+              <div className="w-30 ">
                 <Doughnut data={data} options={doughnutOptions} />
               </div>
             </div>
@@ -59,8 +59,8 @@ function Hydration({ type = "", todayData, todayDataIsLoading }) {
         </div>
       )}
       {todayDataIsLoading && (
-        <div className="flex h-full w-full justify-center items-center  min-w-80  max-w-90 text-[#6572aa]">
-          <Loading message="Fetching Calories Data" />
+        <div className="flex h-full w-full justify-center items-center  min-w-80  lg:max-w-90 text-[#6572aa]">
+          <Loading message="Fetching Hydration Data" />
         </div>
       )}
     </div>

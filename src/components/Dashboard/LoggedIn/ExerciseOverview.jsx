@@ -8,11 +8,11 @@ export default function ExerciseOverview({ todayData, todayDataIsLoading }) {
   return (
     <>
       {!todayDataIsLoading && todayData && (
-        <div className="text-[#6572aa] w-full max-w-90 rounded-lg text-center px-5 py-5">
+        <div className="text-[#6572aa] w-full lg:max-w-90 rounded-lg text-center px-5 py-5">
           <p className="text-xl font-semibold">Exercise</p>
           <div className="flex flex-col gap-3 mt-5">
-            <div className="flex justify-between">
-              <div className="flex gap-2 text-orange-500">
+            <div className="flex justify-between max-lg:text-sm">
+              <div className="flex gap-2 text-orange-500 ">
                 <FontAwesomeIcon
                   icon="fa-solid fa-shoe-prints"
                   rotation={270}
@@ -20,13 +20,13 @@ export default function ExerciseOverview({ todayData, todayDataIsLoading }) {
                 />
                 Steps
               </div>
-              <div className="flex w-22 justify-between text-orange-500 gap-2">
+              <div className="flex w-22 justify-between text-orange-500 gap-2 max-lg:text-sm">
                 <p>{steps}</p>
                 <p>steps</p>
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="flex gap-2 text-blue-500">
+              <div className="flex gap-2 text-blue-500 max-lg:text-sm">
                 <FontAwesomeIcon
                   icon="fa-solid fa-football"
                   rotation={270}
@@ -34,7 +34,7 @@ export default function ExerciseOverview({ todayData, todayDataIsLoading }) {
                 />
                 Exercise
               </div>
-              <div className="flex w-22 justify-between text-blue-500 gap-2">
+              <div className="flex w-22 justify-between text-blue-500 gap-2 max-lg:text-sm">
                 <p>{exerciseBurn}</p>
                 <p>kcal</p>
               </div>

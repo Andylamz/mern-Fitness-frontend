@@ -50,7 +50,7 @@ function Macros({ todayData, todayDataIsLoading }) {
         datasets: [
           {
             label: "grams",
-            data: [protein, (1.6 * protein - protein).toFixed(0)],
+            data: [protein, (1.6 * todayData.weight - protein).toFixed(0)],
             backgroundColor: ["#42f1b1", "#0f1424"],
             barThickness: 20,
             borderWidth: 0,
@@ -95,7 +95,7 @@ function Macros({ todayData, todayDataIsLoading }) {
       }
     : {};
   return (
-    <div className="w-full max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
+    <div className="w-full lg:max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
       <>
         {todayData && !todayDataIsLoading && (
           <>

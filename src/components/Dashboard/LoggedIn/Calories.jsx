@@ -42,7 +42,7 @@ function Calories({ todayData, todayDataIsLoading }) {
   return (
     <>
       {!todayDataIsLoading && todayData && (
-        <div className="text-[#6572aa] bg-[#252733] w-full max-w-90 rounded-lg text-center px-5 py-5 h-70 hover:scale-105 transition-all duration-500">
+        <div className="text-[#6572aa] bg-[#252733] w-full lg:max-w-90 rounded-lg text-center px-5 py-5 h-70 hover:scale-105 transition-all duration-500">
           <div className="flex justify-start py-2 text-[#c9b26c]">Calories</div>
           <div className="flex justify-between h-50">
             <div className="flex-2 min-w-0">
@@ -66,7 +66,7 @@ function Calories({ todayData, todayDataIsLoading }) {
         </div>
       )}
       {todayDataIsLoading && (
-        <div className="flex w-full justify-center items-center text-[#6572aa] bg-[#252733] min-w-80  max-w-90 rounded-lg text-center px-5 py-5 h-70 hover:scale-105 transition-all duration-500">
+        <div className="flex w-full justify-center items-center text-[#6572aa] bg-[#252733] min-w-80  lg:max-w-90 rounded-lg text-center px-5 py-5 h-70 hover:scale-105 transition-all duration-500">
           <Loading message="Fetching Calories Data" />
         </div>
       )}

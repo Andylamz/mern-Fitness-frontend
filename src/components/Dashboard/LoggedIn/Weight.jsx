@@ -88,7 +88,7 @@ function Weight({ data, dataIsLoading }) {
         }
       : {};
   return (
-    <div className="w-full max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
+    <div className="w-full lg:max-w-90 bg-[#252733] border-top pt-0.5 rounded-lg h-70 text-[#6572aa] hover:scale-105 duration-500">
       {weight && dates && (
         <div className="h-full flex flex-col justify-center px-5">
           <div className="flex justify-start py-2 text-[#c9b26c]">
