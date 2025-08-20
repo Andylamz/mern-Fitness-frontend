@@ -35,6 +35,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
+        <p>To</p>
         <SignUp routing="path" signInUrl="/sign-in" />
       </>
     ),
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
+        <p className="text-center text-[#c9b26c]">
+          To use Demo Account, please enter andy+clerk_test@gmail.com
+        </p>
+        <p className="text-center text-[#c9b26c]">Demo Verify Code: 424242</p>
         <SignIn routing="path" signUpUrl="/sign-up" />
       </>
     ),
