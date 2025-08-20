@@ -18,6 +18,7 @@ import FoodLogPage from "../components/Dashboard/LoggedIn/AddPages/Food/FoodLogP
 import SearchFoodPage from "../components/Dashboard/LoggedIn/AddPages/Food/SearchFoodPage";
 import AddWaterPage from "../components/Dashboard/LoggedIn/AddPages/AddWaterPage";
 import FoodInfoPage from "../components/Dashboard/LoggedIn/AddPages/Food/FoodInfoPage";
+import SignUp from "../routes/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,15 @@ const router = createBrowserRouter([
       <>
         {/* <Header /> */}
         <Home />
+      </>
+    ),
+  },
+  {
+    path: "/sign-up",
+    element: (
+      <>
+        <Header />
+        <SignUp />
       </>
     ),
   },
